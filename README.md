@@ -1,38 +1,40 @@
-> # ⚠️ This is a temporary fork. Check upstream first.
+> # 🛑 Retired — do not use this fork. Use one of these instead.
 >
-> **Go and look at [jhansche/ha-birdbuddy][up] before installing this.** This
-> fork exists for one reason: to fix the recent visitor image while
-> [issue #98][i98] is open upstream. **If that issue is closed, or the upstream
-> release notes mention the postcard image, use upstream instead and uninstall
-> this.** It is not maintained as a rival, it will not track upstream's other
-> work, and it should stop existing.
+> This fork was made on 11 August 2026 to fix the `unknown` recent-visitor
+> image. **It should not have been.** The same fix already existed publicly, and
+> better work was already open upstream — I failed to check before forking.
 >
-> The fixes here are offered upstream as [ha-birdbuddy PR][pr1] and
-> [pybirdbuddy PR][pr2]. If those merge, this fork is redundant.
+> **Use instead, in order of preference:**
 >
-> **What it fixes.** `image.*_recent_visitor_image` sits at `unknown` because
-> the integration fetches the image via `sightingCreateFromPostcard`, a Bird
-> Buddy API call that has been returning HTTP 500 since around April 2026.
-> A postcard already carries its own images, so this fork reads them from the
-> feed and needs no mutation. It also stops that one server error marking
-> *every* Bird Buddy entity unavailable.
+> 1. **[jhansche/ha-birdbuddy][up] (upstream)** — check first. If
+>    [#98][i98] is closed or [parrot-tailor's stack][pt] has merged, upstream is
+>    the answer and you need no fork at all.
+> 2. **[JoeQuantum/ha-birdbuddy][jq]** — an actively maintained fork that fixed
+>    this image bug in June 2026 ([issue #7][jq7], v0.1.8), and adds
+>    configurable polling, a last-sync sensor and a new-feed-item event. This is
+>    what I switched my own install to.
 >
-> **What it does not fix.** Postcards are still **not collected** into your
-> Bird Buddy collection — that genuinely does need the broken call, so it has
-> to be done in the phone app. The species sensor is unaffected. The 500 is
-> the Bird Buddy backend's and cannot be fixed from any client.
+> Credit where it belongs: **[birdsense/ha-birdbuddy][bs]** had the postcard
+> image working first, **@yorb** found and tested it, and **@JoeQuantum** shipped
+> it. Upstream, **@parrot-tailor** has a four-PR stack that removes the broken
+> `sightingCreateFromPostcard` call altogether rather than working around it.
 >
-> **Honesty about how this was produced.** The diagnosis and the code were
-> done by Claude Code (an AI coding agent), driven and reviewed by a human, and
-> verified against one live feeder — the image entity serves a real JPEG and
-> updates when a postcard arrives. That is a sample of one, on one account.
-> Treat it as a working patch that fixed a real problem, not as a
-> comprehensively tested release.
+> My two PRs ([ha-birdbuddy#110][pr1], [pybirdbuddy#50][pr2]) are marked
+> superseded. The only findings here I think were additive are in
+> [my comment on #98][c98]: the AI+ subscription theory does not hold, and the
+> 500 correlates with birdless postcards.
+>
+> This repository is archived and will not be updated.
 >
 > [up]: https://github.com/jhansche/ha-birdbuddy
 > [i98]: https://github.com/jhansche/ha-birdbuddy/issues/98
+> [pt]: https://github.com/jhansche/ha-birdbuddy/pull/109
+> [jq]: https://github.com/JoeQuantum/ha-birdbuddy
+> [jq7]: https://github.com/JoeQuantum/ha-birdbuddy/issues/7
+> [bs]: https://github.com/birdsense/ha-birdbuddy
 > [pr1]: https://github.com/jhansche/ha-birdbuddy/pull/110
 > [pr2]: https://github.com/jhansche/pybirdbuddy/pull/50
+> [c98]: https://github.com/jhansche/ha-birdbuddy/issues/98#issuecomment-5254556052
 
 # Bird Buddy Home Assistant Integration
 
