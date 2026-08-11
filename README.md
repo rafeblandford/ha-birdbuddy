@@ -1,3 +1,39 @@
+> # ⚠️ This is a temporary fork. Check upstream first.
+>
+> **Go and look at [jhansche/ha-birdbuddy][up] before installing this.** This
+> fork exists for one reason: to fix the recent visitor image while
+> [issue #98][i98] is open upstream. **If that issue is closed, or the upstream
+> release notes mention the postcard image, use upstream instead and uninstall
+> this.** It is not maintained as a rival, it will not track upstream's other
+> work, and it should stop existing.
+>
+> The fixes here are offered upstream as [ha-birdbuddy PR][pr1] and
+> [pybirdbuddy PR][pr2]. If those merge, this fork is redundant.
+>
+> **What it fixes.** `image.*_recent_visitor_image` sits at `unknown` because
+> the integration fetches the image via `sightingCreateFromPostcard`, a Bird
+> Buddy API call that has been returning HTTP 500 since around April 2026.
+> A postcard already carries its own images, so this fork reads them from the
+> feed and needs no mutation. It also stops that one server error marking
+> *every* Bird Buddy entity unavailable.
+>
+> **What it does not fix.** Postcards are still **not collected** into your
+> Bird Buddy collection — that genuinely does need the broken call, so it has
+> to be done in the phone app. The species sensor is unaffected. The 500 is
+> the Bird Buddy backend's and cannot be fixed from any client.
+>
+> **Honesty about how this was produced.** The diagnosis and the code were
+> done by Claude Code (an AI coding agent), driven and reviewed by a human, and
+> verified against one live feeder — the image entity serves a real JPEG and
+> updates when a postcard arrives. That is a sample of one, on one account.
+> Treat it as a working patch that fixed a real problem, not as a
+> comprehensively tested release.
+>
+> [up]: https://github.com/jhansche/ha-birdbuddy
+> [i98]: https://github.com/jhansche/ha-birdbuddy/issues/98
+> [pr1]: https://github.com/jhansche/ha-birdbuddy/pulls
+> [pr2]: https://github.com/jhansche/pybirdbuddy/pulls
+
 # Bird Buddy Home Assistant Integration
 
 Custom integration for [Bird Buddy](https://mybirdbuddy.com/).

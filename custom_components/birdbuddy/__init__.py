@@ -18,6 +18,7 @@ from .const import (
     SERVICE_SCHEMA_COLLECT_POSTCARD,
 )
 from .coordinator import BirdBuddyDataUpdateCoordinator
+from .pybirdbuddy_compat import apply as _apply_pybirdbuddy_compat
 from .hass_util import _find_coordinator_by_feeder
 
 PLATFORMS: list[Platform] = [
@@ -44,6 +45,9 @@ async def async_setup_entry(
     entry: ConfigEntry,
 ) -> bool:
     """Set up Bird Buddy from a config entry."""
+    # Fork only - see pybirdbuddy_compat. Remove when upstream lands.
+    _apply_pybirdbuddy_compat()
+
     hass.data.setdefault(DOMAIN, {})
     client = BirdBuddy(entry.data[CONF_EMAIL], entry.data[CONF_PASSWORD])
     client.language_code = hass.config.language
