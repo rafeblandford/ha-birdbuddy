@@ -5,7 +5,7 @@ This file exists ONLY so the fork works against the published
 point of difference between this fork and the upstream pull request, which
 carries these changes in pybirdbuddy itself:
 
-    https://github.com/jhansche/pybirdbuddy/pull/<pybirdbuddy-pr>
+    https://github.com/jhansche/pybirdbuddy/pull/50
 
 When that lands and ha-birdbuddy pins a release containing it, delete this
 module and the one call to `apply()` in `__init__.py`. Nothing else changes.

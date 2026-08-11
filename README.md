@@ -31,8 +31,8 @@
 >
 > [up]: https://github.com/jhansche/ha-birdbuddy
 > [i98]: https://github.com/jhansche/ha-birdbuddy/issues/98
-> [pr1]: https://github.com/jhansche/ha-birdbuddy/pulls
-> [pr2]: https://github.com/jhansche/pybirdbuddy/pulls
+> [pr1]: https://github.com/jhansche/ha-birdbuddy/pull/110
+> [pr2]: https://github.com/jhansche/pybirdbuddy/pull/50
 
 # Bird Buddy Home Assistant Integration
 
